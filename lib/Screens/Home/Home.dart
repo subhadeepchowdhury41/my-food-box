@@ -1,9 +1,11 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myfoodbox/Components/Profile%20Page/ProfilePicture.dart';
 import 'package:myfoodbox/Components/Profile%20Page/listTileIcon.dart';
 import 'package:myfoodbox/Components/RoundedButton.dart';
 import 'package:myfoodbox/Screens/Home/Breakfast.dart';
+import 'package:myfoodbox/Screens/Home/FoodDetails.dart';
 import 'package:myfoodbox/Screens/UserProfile/profile.dart';
 import '../../Components/HomePage/BottomNav.dart';
 import '../../Components/HomePage/CounterCard.dart';
@@ -20,7 +22,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String location_value = 'Location 1';
+  String locationValue = 'Location 1';
   var locations = [
     'Location 1',
     'Location 2',
@@ -29,12 +31,10 @@ class _HomeState extends State<Home> {
     'Location 5'
   ];
 
-  final meal = [
-    "BreakFast",
-    "Brunch",
-    "Lunch",
-    "Snacks",
-    "Dinner",
+  final List<String> sliderImages = [
+    "https://images.unsplash.com/photo-1508736793122-f516e3ba5569?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2848&q=80",
+    "https://images.unsplash.com/photo-1426869981800-95ebf51ce900?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    "https://images.unsplash.com/photo-1528279027-68f0d7fce9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
   ];
 
   @override
@@ -44,18 +44,14 @@ class _HomeState extends State<Home> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.red,
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-
-
                 Container(
-                  width: size.width-15,
+                  width: size.width - 30,
                   child: Row(
                     children: <Widget>[
-
                       Icon(
                         Icons.location_on_rounded,
                         size: size.width * 0.08,
@@ -64,7 +60,7 @@ class _HomeState extends State<Home> {
                         width: size.width * 0.03,
                       ),
                       DropdownButton(
-                        value: location_value,
+                        value: locationValue,
                         items: locations.map((String locations) {
                           return DropdownMenuItem(
                             value: locations,
@@ -73,7 +69,7 @@ class _HomeState extends State<Home> {
                         }).toList(),
                         onChanged: (String? newValue) {
                           setState(() {
-                            location_value = newValue!;
+                            locationValue = newValue!;
                           });
                         },
                       ),
@@ -102,7 +98,6 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-
                 SizedBox(
                   height: size.height * 0.02,
                 ),
@@ -157,12 +152,26 @@ class _HomeState extends State<Home> {
                     textAlign: TextAlign.left,
                   ),
                 ),
+                SizedBox(height: 30),
 
-                const Padding(
-                  padding: EdgeInsets.all(6.0),
-                  child: Image(
-                    image: NetworkImage(
-                        'https://naominachman.com/wp-content/uploads/2012/02/thai-noodles-5-22-10.jpg'),
+                CarouselSlider(
+                  items: sliderImages
+                      .map(
+                        (item) => Container(
+                          child: Image.network(
+                            item,
+                            fit: BoxFit.cover,
+                            width: size.width - 100,
+                            height: 400,
+                          ),
+                        ),
+                      )
+                      .toList(),
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    aspectRatio: 2.0,
+                    height: 180,
+                    enlargeCenterPage: true,
                   ),
                 ),
 
@@ -277,7 +286,7 @@ class _HomeState extends State<Home> {
                 //     ),
                 //   ],
                 // ),
-                SizedBox(height: 30,),
+                SizedBox(height: 30),
 
                 Padding(
                   padding: const EdgeInsets.all(6.0),
@@ -285,25 +294,33 @@ class _HomeState extends State<Home> {
                     'All Counter Around You',
                     style: TextStyle(
                       fontSize: size.width * 0.05,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.bold,
                       fontFamily: 'Inter',
                     ),
                     textAlign: TextAlign.left,
                   ),
                 ),
-                SizedBox(height: 30,),
-
-
-                CounterCard(
-                  size: size,
-                  image:
-                      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.7dVRWoiw1S3xZUcAEvCxVQHaFE%26pid%3DApi&f=1&ipt=3e0b17e4c78ae0845046dcb4add73dcb6ce3e509e79679294b6365b3502887b2&ipo=images',
-                  counterName: 'Counter 1',
-                  dishName: 'Dish Name',
-                  desc: '310+ orders placed from here recently',
-                  rating: '4.1',
-                  price: '₹100',
+                SizedBox(
+                  height: 30,
                 ),
+
+                InkWell(
+                  onTap: (){
+                    Get.to(() => const FoodDetails());
+                  },
+                  child: CounterCard(
+                    size: size,
+                    image:
+                        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.7dVRWoiw1S3xZUcAEvCxVQHaFE%26pid%3DApi&f=1&ipt=3e0b17e4c78ae0845046dcb4add73dcb6ce3e509e79679294b6365b3502887b2&ipo=images',
+                    counterName: 'Counter 1',
+                    dishName: 'Dish Name',
+                    desc: '310+ orders placed from here recently',
+                    rating: '4.1',
+                    price: '₹100',
+                  ),
+                ),
+                SizedBox(height: 20),
+
 
                 CounterCard(
                   size: size,
@@ -315,6 +332,7 @@ class _HomeState extends State<Home> {
                   rating: '4.1',
                   price: '₹100',
                 ),
+                SizedBox(height: 20),
 
                 CounterCard(
                   size: size,
@@ -326,6 +344,7 @@ class _HomeState extends State<Home> {
                   rating: '4.1',
                   price: '₹100',
                 ),
+                SizedBox(height: 20),
               ],
             ),
           ),

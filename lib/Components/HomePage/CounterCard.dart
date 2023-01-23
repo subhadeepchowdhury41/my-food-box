@@ -25,7 +25,6 @@ class CounterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
@@ -33,7 +32,7 @@ class CounterCard extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            height: 220,
+            height: 210,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
@@ -48,7 +47,7 @@ class CounterCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 10),
           Row(
             children: <Widget>[
               Padding(
@@ -58,12 +57,17 @@ class CounterCard extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       counterName,
-                      style: TextStyle(fontSize: 24,fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
+                    const SizedBox(height: 5),
                     Text(
                       dishName,
                       style: TextStyle(fontSize: size.width * 0.04),
                     ),
+                    const SizedBox(height: 5),
                     Row(
                       children: <Widget>[
                         Padding(
@@ -71,9 +75,13 @@ class CounterCard extends StatelessWidget {
                           child: CircleAvatar(
                             backgroundColor: Constants.dBlue,
                             radius: size.width * 0.04,
-                            child: const Icon(Icons.timeline),
+                            child: const Icon(
+                              Icons.trending_up_sharp,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
+                        const SizedBox(width: 5),
                         Text(
                           desc,
                           style: const TextStyle(color: Constants.Grey),
@@ -87,6 +95,7 @@ class CounterCard extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       color: const Color(0xff5FC745),
@@ -127,8 +136,7 @@ class CounterCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 10,),
-
+          SizedBox(height: 10),
         ],
       ),
     );
