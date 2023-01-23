@@ -1,0 +1,5 @@
+1. Edit Profile Picture Button.
+2. LogOut prompt Navigator Pop issue.
+3. `Help` and `About` Page design not found in figma project.
+4. Discuss Cards on Wishlist page.
+5. Activity Page major issues.
