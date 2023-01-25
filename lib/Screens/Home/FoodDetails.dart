@@ -10,7 +10,7 @@ class FoodDetails extends StatefulWidget {
 }
 
 class _FoodDetailsState extends State<FoodDetails> {
-  final List<String> sliderImages = [
+  final List<String> similarItemsImage = [
     "https://images.unsplash.com/photo-1508736793122-f516e3ba5569?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2848&q=80",
     "https://images.unsplash.com/photo-1426869981800-95ebf51ce900?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     "https://images.unsplash.com/photo-1528279027-68f0d7fce9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
@@ -43,6 +43,20 @@ class _FoodDetailsState extends State<FoodDetails> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    InkWell(
+                      onTap: (){
+                        Get.back();
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        child: Icon(
+                          Icons.arrow_back_sharp,
+                          color: Colors.black,
+                          // color: Color(0xff868686),
+                        ),
+                      ),
+                    ),
                     Row(
                       children: [
                         Container(
@@ -386,10 +400,10 @@ class _FoodDetailsState extends State<FoodDetails> {
                           ),
                           const SizedBox(height: 35),
                           Container(
-                            height: (sliderImages.length / 3 * 132) + 100,
+                            height: (similarItemsImage.length / 3 * 132) + 100,
                             child: GridView.builder(
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: sliderImages.length,
+                              itemCount: similarItemsImage.length,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
@@ -407,7 +421,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                                         color: Colors.red,
                                         image: DecorationImage(
                                           image:
-                                              NetworkImage(sliderImages[index]),
+                                              NetworkImage(similarItemsImage[index]),
                                           fit: BoxFit.cover,
                                         ),
                                       ),

@@ -81,7 +81,7 @@ class _LogInState extends State<LogIn> {
                   height: size.height*0.08,
                   child: RoundedButton(
               text: 'Login',
-              press: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Home(uid: 1,)));},
+              press: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));},
               color: Constants.dBlue,
               textColor: Colors.white, length: size*0.85, fontsize: 30,
             ),

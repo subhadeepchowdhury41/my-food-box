@@ -13,9 +13,8 @@ import '../../Components/HomePage/DishRecommendation.dart';
 import '../../Constants.dart' as Constants;
 
 class Home extends StatefulWidget {
-  var uid;
 
-  Home({Key? key, required this.uid}) : super(key: key);
+  Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -161,15 +160,15 @@ class _HomeState extends State<Home> {
                           child: Image.network(
                             item,
                             fit: BoxFit.cover,
-                            width: size.width - 100,
+                            width: size.width,
                             height: 400,
                           ),
                         ),
                       )
                       .toList(),
                   options: CarouselOptions(
+                    viewportFraction: 1,
                     autoPlay: true,
-                    aspectRatio: 2.0,
                     height: 180,
                     enlargeCenterPage: true,
                   ),
@@ -322,27 +321,37 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 20),
 
 
-                CounterCard(
-                  size: size,
-                  image:
-                      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.0VL8cvqqxpJyToFwAupCNgHaEU%26pid%3DApi&f=1&ipt=7d5dc5aa61ac0f8aa6cc98ef66c1a25e02b84d32059d9c69df7d197f8402299b&ipo=images',
-                  counterName: 'Counter 1',
-                  dishName: 'Dish Name',
-                  desc: '310+ orders placed from here recently',
-                  rating: '4.1',
-                  price: '₹100',
+                InkWell(
+                  onTap: (){
+                    Get.to(() => const FoodDetails());
+                  },
+                  child: CounterCard(
+                    size: size,
+                    image:
+                        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.0VL8cvqqxpJyToFwAupCNgHaEU%26pid%3DApi&f=1&ipt=7d5dc5aa61ac0f8aa6cc98ef66c1a25e02b84d32059d9c69df7d197f8402299b&ipo=images',
+                    counterName: 'Counter 1',
+                    dishName: 'Dish Name',
+                    desc: '310+ orders placed from here recently',
+                    rating: '4.1',
+                    price: '₹100',
+                  ),
                 ),
                 SizedBox(height: 20),
 
-                CounterCard(
-                  size: size,
-                  image:
-                      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.eKRcna3P-uGZNTQWwxPNrwHaEK%26pid%3DApi&f=1&ipt=c35c095bf76449a39e50de429cb5267f9ce69024357271ccad325cf90e4418e8&ipo=images',
-                  counterName: 'Counter 1',
-                  dishName: 'Dish Name',
-                  desc: '310+ orders placed from here recently',
-                  rating: '4.1',
-                  price: '₹100',
+                InkWell(
+                  onTap: (){
+                    Get.to(() => const FoodDetails());
+                  },
+                  child: CounterCard(
+                    size: size,
+                    image:
+                        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.eKRcna3P-uGZNTQWwxPNrwHaEK%26pid%3DApi&f=1&ipt=c35c095bf76449a39e50de429cb5267f9ce69024357271ccad325cf90e4418e8&ipo=images',
+                    counterName: 'Counter 1',
+                    dishName: 'Dish Name',
+                    desc: '310+ orders placed from here recently',
+                    rating: '4.1',
+                    price: '₹100',
+                  ),
                 ),
                 SizedBox(height: 20),
               ],
