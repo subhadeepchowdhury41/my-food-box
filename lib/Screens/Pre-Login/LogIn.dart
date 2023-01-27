@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myfoodbox/Screens/UserProfile/profile.dart';
+import 'package:myfoodbox/Screens/Home/landing.dart';
+
 import '../../Components/RoundedButton.dart';
 import '../../Components/formField.dart';
 import '../../Constants.dart' as Constants;
-import '../Home/Home.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -76,15 +76,20 @@ class _LogInState extends State<LogIn> {
               ),
             ),
             Positioned(
-              top: size.height*0.8,
+                top: size.height * 0.8,
                 child: SizedBox(
-                  height: size.height*0.08,
+                  height: size.height * 0.08,
                   child: RoundedButton(
-              text: 'Login',
-              press: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));},
-              color: Constants.dBlue,
-              textColor: Colors.white, length: size*0.85, fontsize: 30,
-            ),
+                    text: 'Login',
+                    press: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Landing()));
+                    },
+                    color: Constants.dBlue,
+                    textColor: Colors.white,
+                    length: size * 0.85,
+                    fontsize: 30,
+                  ),
                 ))
           ],
         ),

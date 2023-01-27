@@ -1,13 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myfoodbox/Screens/Home/Home.dart';
-import 'package:myfoodbox/Screens/Home/PaymentPage.dart';
-import 'package:myfoodbox/Screens/Home/landing.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'package:http/http.dart' as http;
-import '../../Credential/razor_credential.dart' as razorCredentials;
 
 class AddToCart extends StatefulWidget {
   const AddToCart({Key? key}) : super(key: key);

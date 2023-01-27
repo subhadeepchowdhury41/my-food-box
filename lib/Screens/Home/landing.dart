@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myfoodbox/Screens/Home/Home.dart';
 
 import '../../Components/Profile Page/ProfilePicture.dart';
 
@@ -168,66 +170,71 @@ class _LandingState extends State<Landing> {
               ),
               const SizedBox(height: 20),
               //DINE IN
-              Stack(
-                alignment: Alignment.centerLeft,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    alignment: Alignment.centerLeft,
-                    height: 75,
-                    width: MediaQuery.of(context).size.width - 20,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffDEEDF6),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 100,
-                        ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          width: MediaQuery.of(context).size.width * 0.50,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "Dine In",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(height: 4),
-                              Text(
-                                "Order through the app,delivered straight to your table",
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15,
-                                  color: Color(0xff595F62),
-                                ),
-                              ),
-                            ],
+              InkWell(
+                onTap: () {
+                  Get.to(() => Home());
+                },
+                child: Stack(
+                  alignment: Alignment.centerLeft,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 10),
+                      alignment: Alignment.centerLeft,
+                      height: 75,
+                      width: MediaQuery.of(context).size.width - 20,
+                      decoration: const BoxDecoration(
+                        color: Color(0xffDEEDF6),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 100,
                           ),
-                        ),
-                      ],
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            width: MediaQuery.of(context).size.width * 0.50,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  "Dine In",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  "Order through the app,delivered straight to your table",
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 15,
+                                    color: Color(0xff595F62),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 100,
-                    width: 100,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffFBD8B8),
-                      shape: BoxShape.circle,
+                    Container(
+                      alignment: Alignment.center,
+                      height: 100,
+                      width: 100,
+                      decoration: const BoxDecoration(
+                        color: Color(0xffFBD8B8),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.asset(
+                        "assets/images/Profile/image 120.png",
+                      ),
                     ),
-                    child: Image.asset(
-                      "assets/images/Profile/image 120.png",
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
               //TAKE AWAY
