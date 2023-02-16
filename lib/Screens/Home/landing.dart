@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myfoodbox/Screens/Home/Home.dart';
-
+import 'package:myfoodbox/Screens/Home/BottomNavBar/Home.dart';
+import 'package:myfoodbox/Screens/Home/BottomNavBar/profileScreen.dart';
+import 'package:myfoodbox/Screens/Home/QRScreen.dart';
 import '../../Components/Profile Page/ProfilePicture.dart';
+import '../Counter/MainCounters.dart';
+import 'MessageScreen.dart';
 
 class Landing extends StatefulWidget {
   const Landing({Key? key}) : super(key: key);
@@ -23,6 +26,7 @@ class _LandingState extends State<Landing> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -35,269 +39,305 @@ class _LandingState extends State<Landing> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width - 20,
-                height: MediaQuery.of(context).size.height * 0.1,
+                height: AppBar().preferredSize.height,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: Icon(
-                        Icons.location_on_rounded,
-                        size: 30,
-                        color: Color(0xff0077B5),
-                      ),
+                    Row(
+                      children: [
+                        const SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: Icon(
+                            Icons.location_on_rounded,
+                            size: 25,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.03),
+                        DropdownButton(
+                          value: location_value,
+                          items: locations.map((String locations) {
+                            return DropdownMenuItem(
+                              value: locations,
+                              child: Text(locations),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              location_value = newValue!;
+                            });
+                          },
+                        ),
+                      ],
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                    DropdownButton(
-                      value: location_value,
-                      items: locations.map((String locations) {
-                        return DropdownMenuItem(
-                          value: locations,
-                          child: Text(locations),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          location_value = newValue!;
-                        });
-                      },
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.15,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.search,
-                        size: 30,
-                        color: Color(0xff868686),
-                      ),
-                      iconSize: MediaQuery.of(context).size.width * 0.08,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.messenger,
-                        size: 30,
-                        color: Color(0xff868686),
-                      ),
-                      iconSize: MediaQuery.of(context).size.width * 0.08,
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.027,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child:
-                          Pfp(radius: MediaQuery.of(context).size.width * 0.07),
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Get.to(() => const MessageScreen());
+                          },
+                          icon: const Icon(
+                            Icons.messenger,
+                            size: 30,
+                            color: Color(0xff868686),
+                          ),
+                          iconSize: MediaQuery.of(context).size.width * 0.08,
+                        ),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.03),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => const ProfileScreen(close: true,));
+                          },
+                          child:
+                          Pfp(radius: MediaQuery.of(context).size.width * 0.05),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 35,
-              ),
-              Image.asset(
-                "assets/images/Profile/image123.png",
-                height: 175,
-                width: MediaQuery.of(context).size.width * 1.75,
-              ),
-              const SizedBox(height: 30),
-              //SCAN AND GO
-              Stack(
-                alignment: Alignment.centerLeft,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 10),
-                    alignment: Alignment.centerLeft,
-                    height: 75,
-                    width: MediaQuery.of(context).size.width - 20,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffDEEDF6),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 100,
-                        ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          width: MediaQuery.of(context).size.width * 0.50,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "Scan and Go",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 4,
-                              ),
-                              Text(
-                                "Scan Any retail item",
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15,
-                                  color: Color(0xff595F62),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 100,
-                    width: 100,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffBEF4B0),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Image.asset(
-                      "assets/images/Profile/image 121.png",
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              //DINE IN
-              InkWell(
-                onTap: () {
-                  Get.to(() => Home());
-                },
-                child: Stack(
-                  alignment: Alignment.centerLeft,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(left: 10),
-                      alignment: Alignment.centerLeft,
-                      height: 75,
-                      width: MediaQuery.of(context).size.width - 20,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffDEEDF6),
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                      ),
-                      child: Row(
+                    const SizedBox(height: 35),
+                    Image.asset(
+                      "assets/images/Profile/image123.png",
+                      height: 175,
+                      width: MediaQuery.of(context).size.width * 1.75,
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SizedBox(
-                            width: 100,
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            width: MediaQuery.of(context).size.width * 0.50,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  "Dine In",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 20,
+                          // Container
+                          const SizedBox(height: 20),
+                          //SCAN AND GO
+                          InkWell(
+                            onTap: () {
+                              Get.to(() => QRScreen());
+                            },
+                            child: Stack(
+                              alignment: Alignment.centerLeft,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 10),
+                                  alignment: Alignment.centerLeft,
+                                  height: 77,
+                                  width: MediaQuery.of(context).size.width - 20,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffDEEDF6),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 100,
+                                      ),
+                                      Container(
+                                        alignment: Alignment.centerLeft,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.50,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Scan and Go",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            SizedBox(height: 4),
+                                            Text(
+                                              "Scan Any retail item",
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: size.width * 0.027,
+                                                color: Color(0xff595F62),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                SizedBox(height: 4),
-                                Text(
-                                  "Order through the app,delivered straight to your table",
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15,
-                                    color: Color(0xff595F62),
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 100,
+                                  width: 100,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffBEF4B0),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.asset(
+                                    "assets/images/Profile/image 121.png",
                                   ),
                                 ),
                               ],
                             ),
                           ),
+                          const SizedBox(height: 30),
+                          //DINE IN
+                          InkWell(
+                            onTap: () {
+                              Get.to(() => MainCounters());
+                              // Get.to(() => Home());
+                            },
+                            child: Stack(
+                              alignment: Alignment.centerLeft,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  alignment: Alignment.centerLeft,
+                                  height: 77,
+                                  width: MediaQuery.of(context).size.width - 20,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffDEEDF6),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 100,
+                                      ),
+                                      Container(
+                                        alignment: Alignment.centerLeft,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.50,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Dine In",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            SizedBox(height: 4),
+                                            Text(
+                                              "Order through the app,delivered straight to your table",
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: size.width * 0.027,
+                                                color: Color(0xff595F62),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 100,
+                                  width: 100,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffFBD8B8),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.asset(
+                                    "assets/images/Profile/image 120.png",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          //TAKE AWAY
+                          InkWell(
+                            onTap: () {
+                              Get.to(() => Home());
+                            },
+                            child: Stack(
+                              alignment: Alignment.centerLeft,
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  alignment: Alignment.centerLeft,
+                                  height: 77,
+                                  width: MediaQuery.of(context).size.width - 20,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffDEEDF6),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 100,
+                                      ),
+                                      Container(
+                                        alignment: Alignment.centerLeft,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.50,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Delivery",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            SizedBox(height: 4),
+                                            Text(
+                                              "Order your favorite on campus food for delivery",
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: size.width * 0.026,
+                                                color: Color(0xff595F62),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 100,
+                                  width: 100,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffFCE5EE),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.asset(
+                                    "assets/images/Profile/image 122.png",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 30),
                         ],
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      height: 100,
-                      width: 100,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffFBD8B8),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.asset(
-                        "assets/images/Profile/image 120.png",
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 20),
-              //TAKE AWAY
-              Stack(
-                alignment: Alignment.centerLeft,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    alignment: Alignment.centerLeft,
-                    height: 75,
-                    width: MediaQuery.of(context).size.width - 20,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffDEEDF6),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 100,
-                        ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          width: MediaQuery.of(context).size.width * 0.50,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "Delivery",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(height: 4),
-                              Text(
-                                "Order your favorite on campus food for delivery",
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15,
-                                  color: Color(0xff595F62),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 100,
-                    width: 100,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffFCE5EE),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Image.asset(
-                      "assets/images/Profile/image 122.png",
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

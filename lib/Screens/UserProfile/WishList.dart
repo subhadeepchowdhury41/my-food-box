@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:myfoodbox/Components/AppBar.dart';
 import 'package:myfoodbox/Components/RoundedButton.dart';
+import 'package:myfoodbox/Controller/home_controller.dart';
+import 'package:myfoodbox/Screens/Home/BottomNavBar/Home.dart';
 import '../../../Constants.dart' as Constants;
+import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class WishList extends StatefulWidget {
   const WishList({Key? key}) : super(key: key);
@@ -11,48 +14,90 @@ class WishList extends StatefulWidget {
 }
 
 class _WishListState extends State<WishList> {
-  @override
+  HomeController homeController = Get.find();
+
+  @override@override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(
-          height: size.height * 0.07,
-        ),
-        appBar(size: size, text: 'WishList'),
-        SizedBox(
-          height: size.height * 0.25,
-        ),
-        Image(
-          image: AssetImage('assets/images/Wishlist/emptyWishlist.png'),
-          width: size.width * 0.4,
-        ),
-        SizedBox(
-          height: size.height * 0.05,
-        ),
-        Text(
-          'There is nothing in your wishlist',
-          style: TextStyle(
-            fontSize: size.width * 0.05,
-            fontFamily: 'Nerko One',
-            fontWeight: FontWeight.w400,
+      body: SafeArea(
+        child: Container(
+          height: size.height,
+          width: size.width,
+          child: Column(
+            children: [
+              Container(
+                height: AppBar().preferredSize.height,
+                width: size.width,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap:(){
+                        Get.back();
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        child: Icon(
+                          Icons.arrow_back_sharp,
+                          color: Colors.black,
+                          size: 25,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        "Settings",
+                        style: GoogleFonts.openSans(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(),
+                  ],
+                ),
+              ),
+              // Divider(
+              //   endIndent: 50,
+              //   indent: 50,
+              //   height: 0,
+              //   color: Colors.black,
+              // ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    Image(
+                      image: AssetImage('assets/images/Wishlist/emptyWishlist.png'),
+                      width: size.width * 0.3,
+                    ),
+                    const SizedBox(height: 20),
+                    Text('There is nothing in your wishlist',),
+                    const SizedBox(height: 100),
+                    RoundedButton(
+                      text: 'Order Now',
+                      press: () {
+                        homeController.bottomNavIndex.value = 0;
+                        Get.offAll(() => Home());
+                      },
+                      color: Constants.dBlue,
+                      textColor: Colors.white,
+                      length: size * 0.85,
+                      fontsize: size.width * 0.05,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
-        SizedBox(
-          height: size.height * 0.2,
-        ),
-        RoundedButton(
-          text: 'Order Now',
-          press: () {},
-          color: Constants.dBlue,
-          textColor: Colors.white,
-          length: size * 0.85,
-          fontsize: size.width * 0.07,
-        ),
-      ],
-    ));
+      ),
+    );
   }
 }

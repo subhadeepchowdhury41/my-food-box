@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myfoodbox/Screens/Intro/Intro-1.dart';
+import 'package:myfoodbox/Controller/home_controller.dart';
+import 'package:myfoodbox/Screens/Counter/MainCounters.dart';
+import 'package:myfoodbox/Screens/Pre-Login/start.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,14 +10,13 @@ void main() {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
+  HomeController homeController = Get.put(HomeController());
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: Home(),
-      home: Intro1(),
+      home: StartPage(),
     );
   }
 }
