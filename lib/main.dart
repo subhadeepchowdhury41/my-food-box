@@ -4,6 +4,8 @@ import 'package:myfoodbox/Controller/home_controller.dart';
 import 'package:myfoodbox/Screens/Counter/MainCounters.dart';
 import 'package:myfoodbox/Screens/Pre-Login/start.dart';
 
+import 'Controller/cartController.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -11,6 +13,7 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   HomeController homeController = Get.put(HomeController());
+  CartController cartController = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {

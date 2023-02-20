@@ -1,64 +1,47 @@
-{
-  "menu": {
-    "tea": [
+[
+  {
+    "name": "Tea",
+    "items": [
       {
+        "id": 1,
         "name": "Simple Tea",
-        "qty": 20,
-        "sizes": [
-          "small",
-          "large"
-        ]
+        "price": 20
       },
       {
+        "id": 2,
         "name": "Rajwadi Tea",
-        "qty": 20,
-        "sizes": [
-          "small",
-          "large"
-        ]
+        "price": 20
       },
       {
+        "id": 3,
         "name": "Elaichi Tea",
-        "qty": 20,
-        "sizes": [
-          "small",
-          "large"
-        ]
+        "price": 20
       },
       {
+        "id": 4,
         "name": "Cardamom Tea",
-        "qty": 40,
-        "sizes": [
-          "small",
-          "large"
-        ]
+        "price": 40
       }
-    ],
-    "coffee": [
+    ]
+  },
+  {
+    "name": "Coffee",
+    "items": [
       {
+        "id": 5,
         "name": "Simple Coffee",
-        "qty": 20,
-        "sizes": [
-          "small",
-          "large"
-        ]
+        "price": 20
       },
       {
+        "id": 6,
         "name": "Cappuccino",
-        "qty": 20,
-        "sizes": [
-          "small",
-          "large"
-        ]
+        "price": 20
       },
       {
+        "id": 7,
         "name": "Cafe Mocha",
-        "qty": 20,
-        "sizes": [
-          "small",
-          "large"
-        ]
+        "price": 20
       }
     ]
   }
-}
+]

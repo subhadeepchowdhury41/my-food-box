@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:myfoodbox/Screens/Home/BottomNavBar/AddToCart.dart';
@@ -7,6 +10,7 @@ import 'package:myfoodbox/Screens/Home/BottomNavBar/HomeBottomNav.dart';
 import 'package:myfoodbox/Screens/Home/BottomNavBar/history.dart';
 import 'package:myfoodbox/Screens/Home/BottomNavBar/profile.dart';
 
+import '../Model/FoodMenu.dart';
 import '../Screens/Home/BottomNavBar/profileScreen.dart';
 
 class HomeController extends GetxController {
@@ -31,10 +35,10 @@ class HomeController extends GetxController {
       icon: Icons.history,
       text: "History",
     ),
-    const GButton(
-      icon: Icons.shopping_cart,
-      text: "Cart",
-    ),
+    // const GButton(
+    //   icon: Icons.shopping_cart,
+    //   text: "Cart",
+    // ),
     const GButton(
       icon: Icons.person,
       text: "Profile",
@@ -48,10 +52,17 @@ class HomeController extends GetxController {
   List<Widget> bottomNavigationPages = [
     HomeBottomNav(),
     HistoryScreen(),
-    AddToCart(),
+    // AddToCart(),
     ProfileScreen(close: false),
-    // const BuyerMode(),
-    // const FarmerMode(),
-    // const TransporterMode(),
   ];
+
+  var menuList = [].obs;
+
+  Future<void> readJson() async{
+    final String response = await rootBundle.loadString('assets/Data/foodMenu.json');
+    final data = await json.decode(response);
+
+    menuList.value = data;
+  }
+
 }

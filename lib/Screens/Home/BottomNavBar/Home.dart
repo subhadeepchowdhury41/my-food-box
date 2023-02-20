@@ -39,66 +39,69 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffF2F2F6),
-      body: Obx(
-        () => IndexedStack(
+    return Obx(() {
+      return Scaffold(
+        backgroundColor: Color(0xffF2F2F6),
+        body: IndexedStack(
           index: homeController.bottomNavIndex.value,
           children: homeController.bottomNavigationPages,
         ),
-      ),
-      bottomNavigationBar: Container(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-          child: GNav(
-            selectedIndex: homeController.bottomNavIndex.value,
-            tabs: homeController.iconsList,
-            padding: const EdgeInsets.all(12.0),
-            gap: 10.0,
-            onTabChange: (index) {
-              homeController.changePage(index);
-            },
-            backgroundColor: Colors.white,
-            color: Colors.black,
-            activeColor: Colors.white,
-            tabBackgroundColor: Colors.red,
+        bottomNavigationBar: Container(
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: 15.0, vertical: 10.0),
+            child: GNav(
+              selectedIndex: homeController.bottomNavIndex.value,
+              tabs: homeController.iconsList,
+              padding: const EdgeInsets.all(12.0),
+              gap: 10.0,
+              onTabChange: (index) {
+                homeController.changePage(index);
+              },
+              backgroundColor: Colors.white,
+              color: Colors.black,
+              activeColor: Colors.white,
+              tabBackgroundColor: Colors.red,
+            ),
           ),
         ),
-      ),
-      // bottomNavigationBar: BottomNav(size: size),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   selectedItemColor: Color(0xff0B3131),
-      //   backgroundColor: Colors.black,
-      //   unselectedItemColor: Colors.grey.shade700,
-      //   currentIndex: homeController.homeIndex.value,
-      //   onTap: (value) {
-      //     homeController.homeIndex.value = value;
-      //   },
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: "Home",
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.history_sharp),
-      //       label: "History",
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.shopping_cart),
-      //       label: "Cart",
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.person),
-      //       label: "Profile",
-      //     ),
-      //   ],
-      // ),
-    );
+        // bottomNavigationBar: BottomNav(size: size),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   selectedItemColor: Color(0xff0B3131),
+        //   backgroundColor: Colors.black,
+        //   unselectedItemColor: Colors.grey.shade700,
+        //   currentIndex: homeController.homeIndex.value,
+        //   onTap: (value) {
+        //     homeController.homeIndex.value = value;
+        //   },
+        //   items: [
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.home),
+        //       label: "Home",
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.history_sharp),
+        //       label: "History",
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.shopping_cart),
+        //       label: "Cart",
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.person),
+        //       label: "Profile",
+        //     ),
+        //   ],
+        // ),
+      );
+    });
   }
 
   Widget foodCard(BuildContext context, int index) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery
+        .of(context)
+        .size;
 
     return InkWell(
       onTap: () {

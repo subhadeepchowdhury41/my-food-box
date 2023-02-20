@@ -6,6 +6,7 @@ import 'package:myfoodbox/Screens/Home/landing.dart';
 import '../../Components/RoundedButton.dart';
 import '../../Components/formField.dart';
 import '../../Constants.dart' as Constants;
+import '../Home/locationSelection.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -74,9 +75,8 @@ class _LogInState extends State<LogIn> {
                 text: 'LOGIN',
                 press: () {
                   homeController.bottomNavIndex.value = 0;
-                  Get.to(()=> const Landing());
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => Landing()));
+                  // Get.to(()=> const Landing());
+                  Get.to(()=> const LocationSelectionScreen());
                 },
                 color: Constants.dBlue,
                 textColor: Colors.white,
