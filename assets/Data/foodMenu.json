@@ -1,0 +1,64 @@
+{
+  "menu": {
+    "tea": [
+      {
+        "name": "Simple Tea",
+        "qty": 20,
+        "sizes": [
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "Rajwadi Tea",
+        "qty": 20,
+        "sizes": [
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "Elaichi Tea",
+        "qty": 20,
+        "sizes": [
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "Cardamom Tea",
+        "qty": 40,
+        "sizes": [
+          "small",
+          "large"
+        ]
+      }
+    ],
+    "coffee": [
+      {
+        "name": "Simple Coffee",
+        "qty": 20,
+        "sizes": [
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "Cappuccino",
+        "qty": 20,
+        "sizes": [
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "Cafe Mocha",
+        "qty": 20,
+        "sizes": [
+          "small",
+          "large"
+        ]
+      }
+    ]
+  }
+}
