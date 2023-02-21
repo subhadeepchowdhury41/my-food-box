@@ -7,6 +7,7 @@ import 'package:myfoodbox/Components/Profile%20Page/ProfilePicture.dart';
 import 'package:myfoodbox/Screens/Home/FoodDetails.dart';
 import 'package:myfoodbox/Screens/Home/BottomNavBar/profile.dart';
 
+import '../../../Constants.dart';
 import '../../../Controller/home_controller.dart';
 
 class Home extends StatefulWidget {
@@ -41,7 +42,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Obx(() {
       return Scaffold(
-        backgroundColor: Color(0xffF2F2F6),
+        backgroundColor: lightBackground,
         body: IndexedStack(
           index: homeController.bottomNavIndex.value,
           children: homeController.bottomNavigationPages,

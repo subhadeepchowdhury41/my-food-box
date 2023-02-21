@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import '../../Constants.dart';
 import '../Home/BottomNavBar/Home.dart';
 
 class MainCounters extends StatefulWidget {
@@ -23,7 +24,7 @@ class _MainCountersState extends State<MainCounters> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: whiteBackground,
       body: SafeArea(
         child: Container(
           height: size.height,
@@ -62,7 +63,7 @@ class _MainCountersState extends State<MainCounters> {
                                     Text(
                                       "Veg HamBurger",
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: textWhite,
                                         fontSize: size.width * 0.1,
                                         fontStyle: FontStyle.italic,
                                         fontWeight: FontWeight.bold,
@@ -72,7 +73,7 @@ class _MainCountersState extends State<MainCounters> {
                                     Text(
                                       "Always in Demand",
                                       style: TextStyle(
-                                        color: Colors.white,
+                                        color: textWhite,
                                         fontSize: size.width * 0.035,
                                         fontStyle: FontStyle.italic,
                                         fontWeight: FontWeight.w500,
@@ -108,7 +109,7 @@ class _MainCountersState extends State<MainCounters> {
                       child: Text(
                         "Food Counters",
                         style: GoogleFonts.openSans(
-                          color: Colors.black,
+                          color: textBlack,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -162,7 +163,7 @@ class _MainCountersState extends State<MainCounters> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    color: Colors.white,
+                                    color: whiteBackground,
                                     margin: EdgeInsets.symmetric(horizontal: 10),
                                     padding: EdgeInsets.symmetric(vertical: 7),
                                     width: double.infinity,
@@ -170,7 +171,7 @@ class _MainCountersState extends State<MainCounters> {
                                         child: Text(
                                       "Food Counter A",
                                       style: GoogleFonts.openSans(
-                                        color: Colors.black,
+                                        color: textBlack,
                                       ),
                                     )),
                                   ),

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:myfoodbox/Controller/home_controller.dart';
 
 import '../../Components/Profile Page/ProfilePicture.dart';
+import '../../Constants.dart';
 import 'BottomNavBar/AddToCart.dart';
 import 'BottomNavBar/profileScreen.dart';
 import 'MessageScreen.dart';
@@ -50,7 +51,7 @@ class _FoodDetailsState extends State<FoodDetails> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Color(0xffF2F2F6),
+      backgroundColor: lightBackground,
       body: SafeArea(
         child: Container(
           height: size.height,
@@ -180,7 +181,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                                   },
                                   icon: const Icon(
                                     Icons.close_sharp,
-                                    color: Colors.black,
+                                    color: iconBlack
                                   ),
                                   iconSize: size.width * 0.06,
                                 )
@@ -289,14 +290,14 @@ class _FoodDetailsState extends State<FoodDetails> {
                                             child: Text(
                                               "4.2",
                                               style: GoogleFonts.roboto(
-                                                  color: Colors.black,
+                                                  color:textBlack,
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                           Icon(
                                             Icons.star,
-                                            color: Colors.black,
+                                            color: iconBlack,
                                             size: 20,
                                           )
                                         ],
@@ -320,7 +321,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                                           child: Text(
                                             "Dishes Name",
                                             style: TextStyle(
-                                              color: Colors.black,
+                                              color: textBlack,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 17,
                                             ),
@@ -331,13 +332,13 @@ class _FoodDetailsState extends State<FoodDetails> {
                                             children: [
                                               Icon(
                                                 Icons.currency_rupee_sharp,
-                                                color: Colors.black,
+                                                color: iconBlack,
                                                 size: 14,
                                               ),
                                               Text(
                                                 "60",
                                                 style: TextStyle(
-                                                  color: Colors.black,
+                                                  color: textBlack,
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 17,
                                                 ),

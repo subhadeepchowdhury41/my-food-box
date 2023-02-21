@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myfoodbox/Constants.dart';
 import 'package:myfoodbox/Controller/cartController.dart';
 import 'package:get/get.dart';
 import 'package:myfoodbox/Screens/Home/BottomNavBar/Home.dart';
@@ -40,7 +41,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         },
                         child: Icon(
                           Icons.arrow_back_ios_new_sharp,
-                          color: Colors.black,
+                          color: iconBlack,
                           size: 24,
                         ),
                       ),
@@ -50,7 +51,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         style: GoogleFonts.openSans(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Colors.black,
+                          color: textBlack,
                         ),
                       )
                     ],
@@ -68,19 +69,19 @@ class _PaymentPageState extends State<PaymentPage> {
                               "Canteen",
                               style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: textBlack,
                                 fontSize: 16,
                               ),
                             ),
                             Divider(
-                              color: Colors.black,
+                              color: textBlack,
                               thickness: 1,
                             ),
                             Text(
                               "Food Counter C",
                               style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                                  color: textBlack,
                                   fontSize: 25),
                             ),
                           ],
@@ -93,12 +94,12 @@ class _PaymentPageState extends State<PaymentPage> {
                               "Payment Methods",
                               style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: textBlack,
                                 fontSize: 16,
                               ),
                             ),
                             Divider(
-                              color: Colors.black,
+                              color: textBlack,
                               thickness: 1,
                             ),
                             const SizedBox(height: 10),
@@ -134,7 +135,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                     style: GoogleFonts.openSans(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black,
+                                      color: textBlack,
                                     ),
                                   ),
                                 ],
@@ -173,7 +174,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                     style: GoogleFonts.openSans(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black,
+                                      color: textBlack,
                                     ),
                                   ),
                                 ],
@@ -189,12 +190,12 @@ class _PaymentPageState extends State<PaymentPage> {
                               "Wallet",
                               style: GoogleFonts.openSans(
                                 // fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: textBlack,
                                 fontSize: 16,
                               ),
                             ),
                             Divider(
-                              color: Colors.black,
+                              color: textBlack,
                               thickness: 1,
                             ),
                             Row(
@@ -204,7 +205,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                   "Wallet Balance",
                                   style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    color: textBlack,
                                     fontSize: 16,
                                   ),
                                 ),
@@ -212,7 +213,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                   "2000",
                                   style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    color:textBlack,
                                     fontSize: 16,
                                   ),
                                 ),
@@ -225,12 +226,12 @@ class _PaymentPageState extends State<PaymentPage> {
                           "Items List",
                           style: GoogleFonts.openSans(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: textBlack,
                             fontSize: 16,
                           ),
                         ),
                         Divider(
-                          color: Colors.black,
+                          color: textBlack,
                           thickness: 1,
                           endIndent: 120,
                           indent: 120,
@@ -246,7 +247,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           ),
                         ),
                         Divider(
-                          color: Colors.black,
+                          color: textBlack,
                           thickness: 1,
                         ),
                         Row(
@@ -255,7 +256,7 @@ class _PaymentPageState extends State<PaymentPage> {
                             Text(
                               "Total",
                               style: GoogleFonts.openSans(
-                                color: Colors.red,
+                                color: textRed,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -264,13 +265,13 @@ class _PaymentPageState extends State<PaymentPage> {
                               children: [
                                 Icon(
                                   Icons.currency_rupee_sharp,
-                                  color: Colors.red,
+                                  color: textRed,
                                   size: 18,
                                 ),
                                 Text(
                                   cartController.getCartTotal().toString(),
                                   style: GoogleFonts.openSans(
-                                    color: Colors.red,
+                                    color: textRed,
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -287,12 +288,12 @@ class _PaymentPageState extends State<PaymentPage> {
                               "Note For Restaurant",
                               style: GoogleFonts.openSans(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: textBlack,
                                 fontSize: 16,
                               ),
                             ),
                             Divider(
-                              color: Colors.black,
+                              color:textBlack,
                               thickness: 1,
                             ),
                             TextFormField(
@@ -303,7 +304,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                     FloatingLabelBehavior.never,
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.black,
+                                    color: textBlack,
                                   ),
                                 ),
                               ),
@@ -335,7 +336,7 @@ class _PaymentPageState extends State<PaymentPage> {
               child: Text(
                 "Checkout",
                 style: GoogleFonts.openSans(
-                  color: Colors.white,
+                  color: textWhite,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -377,7 +378,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       "Order ID: $randomNumber is Placed Successfully.",
                       style: GoogleFonts.openSans(
-                        color: Colors.black,
+                        color: textBlack,
                         fontWeight: FontWeight.w500,
                         fontSize: 15,
                       ),
@@ -386,7 +387,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     Text(
                       "Items",
                       style: GoogleFonts.openSans(
-                        color: Colors.black,
+                        color: textBlack,
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
                       ),
@@ -409,7 +410,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                           .cartProduct[index].singleFood.name ??
                                       "",
                                   style: GoogleFonts.openSans(
-                                    color: Colors.black,
+                                    color: textBlack,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -417,7 +418,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 Text(
                                   "${cartController.cartProduct[index].qty.toString()} X ${cartController.cartProduct[index].singleFood.price}",
                                   style: GoogleFonts.openSans(
-                                    color: Colors.black,
+                                    color: textBlack,
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -436,7 +437,7 @@ class _PaymentPageState extends State<PaymentPage> {
                             "Total: ${cartController.getCartTotal()}",
                             style: GoogleFonts.openSans(
                               fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                              color: textBlack,
                               fontSize: 18,
                             ),
                           )
@@ -481,7 +482,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
-                                  color: Colors.white,
+                                  color: textWhite,
                                 ),
                               ),
                             ),
@@ -506,7 +507,7 @@ class _PaymentPageState extends State<PaymentPage> {
               ),
               child: Icon(
                 Icons.checklist,
-                color: Colors.white,
+                color: iconWhite,
                 size: 30,
               ),
             ),
@@ -601,7 +602,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
-                                  color: Colors.white,
+                                  color: textWhite,
                                 ),
                               ),
                             ),
@@ -630,7 +631,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
-                                  color: Colors.white,
+                                  color: textWhite,
                                 ),
                               ),
                             ),
@@ -655,7 +656,7 @@ class _PaymentPageState extends State<PaymentPage> {
               ),
               child: Icon(
                 Icons.checklist,
-                color: Colors.white,
+                color: iconWhite,
                 size: 30,
               ),
             ),
@@ -694,7 +695,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           cartController.cartProduct[index].singleFood.name ??
                               "",
                           style: GoogleFonts.openSans(
-                            color: Colors.black,
+                            color: textBlack,
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
                           ),
@@ -707,13 +708,13 @@ class _PaymentPageState extends State<PaymentPage> {
                       Icon(
                         Icons.currency_rupee_sharp,
                         size: 16,
-                        color: Colors.black,
+                        color: iconBlack,
                       ),
                       Text(
                         "${cartController.cartProduct[index].singleFood.price}",
                         style: GoogleFonts.openSans(
                           fontSize: 17,
-                          color: Colors.black,
+                          color: textBlack,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -721,7 +722,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         " X ${cartController.cartProduct[index].qty}",
                         style: GoogleFonts.openSans(
                           fontSize: 17,
-                          color: Colors.black,
+                          color: textBlack,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -736,7 +737,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     children: [
                       Icon(
                         Icons.currency_rupee_sharp,
-                        color: Colors.black,
+                        color: iconBlack,
                         size: 16,
                       ),
                       Container(
@@ -744,7 +745,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           "$singleTotal",
                           style: GoogleFonts.openSans(
                             fontSize: 17,
-                            color: Colors.black,
+                            color: textBlack,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -756,12 +757,6 @@ class _PaymentPageState extends State<PaymentPage> {
             ],
           ),
         ),
-        // Divider(
-        //   color: Colors.black,
-        //   thickness: 0.5,
-        //   endIndent: 40,
-        //   indent: 40,
-        // ),
       ],
     );
   }

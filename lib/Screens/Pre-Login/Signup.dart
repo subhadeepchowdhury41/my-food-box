@@ -26,148 +26,135 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Positioned(
-              top: size.height * 0.1,
-              child: Logo(
-                radius: 60,
-              ),
-            ),
-            Positioned(
-              top: size.height * 0.26,
-              child: Container(
-                width: size.width * 0.75,
-                child: Text(
-                  'WELCOME',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontWeight: FontWeight.w500,
-                    fontSize: size.width * 0.061,
-                    color: Constants.dBlue,
-                    fontFamily: 'Poppins',
-                  ),
+      body: SafeArea(
+        child: Container(
+          color: Colors.white,
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              // alignment: Alignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                const SizedBox(height: 30),
+                Column(
+                  children: [
+                    Logo(
+                      radius: 60,
+                    ),
+                    Container(
+                      width: size.width * 0.75,
+                      child: Text(
+                        'WELCOME',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          fontWeight: FontWeight.w500,
+                          fontSize: size.width * 0.061,
+                          color: Constants.dBlue,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-            Positioned(
-              top: size.height * 0.34,
-              width: size.width,
-              child: formField(
-                size: size,
-                text: 'Name',
-              ),
-            ),
-            Positioned(
-              top: size.height * 0.41,
-              width: size.width,
-              child: formField(
-                size: size,
-                text: 'Email',
-              ),
-            ),
-            Positioned(
-              top: size.height * 0.48,
-              width: size.width,
-              child: formField(
-                size: size,
-                text: 'Phone Number',
-              ),
-            ),
-            Positioned(
-              top: size.height * 0.56,
-              width: size.width,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    size.width * 0.07, 0, size.width * 0.07, 0),
-                child: TextFormField(
-                  obscureText: show,
-                  decoration: InputDecoration(
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            show = !show;
-                          });
-                        },
-                        child: Icon(
-                          show ? Icons.visibility : Icons.visibility_off,
+                const SizedBox(height: 50),
+                Column(
+                  children: [
+                    formField(
+                      size: size,
+                      text: 'Name',
+                    ),
+                    formField(
+                      size: size,
+                      text: 'Email',
+                    ),
+                    formField(
+                      size: size,
+                      text: 'Phone Number',
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          size.width * 0.07, 0, size.width * 0.07, 0),
+                      child: TextFormField(
+                        obscureText: show,
+                        decoration: InputDecoration(
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                show = !show;
+                              });
+                            },
+                            child: Icon(
+                              show ? Icons.visibility : Icons.visibility_off,
+                              color: Constants.Grey,
+                            ),
+                          ),
+                          labelText: 'Password',
+                          labelStyle: TextStyle(
+                            color: Constants.Grey,
+                            fontSize: size.width * 0.04,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          size.width * 0.07, 0, size.width * 0.07, 0),
+                      child: TextFormField(
+                        obscureText: show,
+                        decoration: InputDecoration(
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                show = !show;
+                              });
+                            },
+                            child: Icon(
+                              show ? Icons.visibility : Icons.visibility_off,
+                              color: Constants.Grey,
+                            ),
+                          ),
+                          labelText: 'Confirm Password',
+                          labelStyle: TextStyle(
+                            color: Constants.Grey,
+                            fontSize: size.width * 0.04,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50),
+                Column(
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Use a Strong Password',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: size.width * 0.025,
                           color: Constants.Grey,
                         ),
                       ),
-                      labelText: 'Password',
-                      labelStyle: TextStyle(
-                        color: Constants.Grey,
-                        fontSize: size.width * 0.04,
-                        fontFamily: 'Poppins',
-                      )),
-                ),
-              ),
-            ),
-            Positioned(
-              top: size.height * 0.64,
-              width: size.width,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    size.width * 0.07, 0, size.width * 0.07, 0),
-                child: TextFormField(
-                  obscureText: show,
-                  decoration: InputDecoration(
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          show = !show;
-                        });
+                    ),
+                    RoundedButton(
+                      color: Constants.dBlue,
+                      text: 'Sign Up',
+                      press: () {
+                        Get.to(() => const Adress());
                       },
-                      child: Icon(
-                        show ? Icons.visibility : Icons.visibility_off,
-                        color: Constants.Grey,
-                      ),
+                      fontsize: size.width * 0.055,
+                      length: size * 0.7,
+                      textColor: Colors.white,
                     ),
-                    labelText: 'Confirm Password',
-                    labelStyle: TextStyle(
-                      color: Constants.Grey,
-                      fontSize: size.width * 0.04,
-                      fontFamily: 'Poppins',
-                    ),
-                  ),
+                  ],
                 ),
-              ),
+              ],
             ),
-            Positioned(
-              top: size.height * 0.7,
-              left: size.width * 0.05,
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Use a Strong Password',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: size.width * 0.025,
-                    color: Constants.Grey,
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              top: size.height * 0.85,
-              child: RoundedButton(
-                color: Constants.dBlue,
-                text: 'Sign Up',
-                press: () {
-                  Get.to(() => const Adress());
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => Adress()));
-                },
-                fontsize: size.width * 0.055,
-                length: size * 0.7,
-                textColor: Colors.white,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

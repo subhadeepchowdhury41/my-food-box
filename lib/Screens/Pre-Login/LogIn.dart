@@ -31,60 +31,63 @@ class _LogInState extends State<LogIn> {
     return Scaffold(
       body: Container(
         color: Colors.white,
-        child: Column(
-          // alignment: Alignment.topCenter,
-          children: <Widget>[
-            Image.asset(
-              'assets/images/LogIn/LogIn.png',
-              width: size.width,
-            ),
-            formField(
-              size: size,
-              text: 'Email Id',
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(
-                  size.width * 0.07, 0, size.width * 0.07, 0),
-              child: TextFormField(
-                obscureText: show,
-                decoration: InputDecoration(
-                  suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        show = !show;
-                      });
-                    },
-                    child: Icon(
-                      show ? Icons.visibility : Icons.visibility_off,
-                      color: Constants.Grey,
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            // alignment: Alignment.topCenter,
+            children: <Widget>[
+              Image.asset(
+                'assets/images/LogIn/LogIn.png',
+                width: size.width,
+              ),
+              formField(
+                size: size,
+                text: 'Email Id',
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    size.width * 0.07, 0, size.width * 0.07, 0),
+                child: TextFormField(
+                  obscureText: show,
+                  decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          show = !show;
+                        });
+                      },
+                      child: Icon(
+                        show ? Icons.visibility : Icons.visibility_off,
+                        color: Constants.Grey,
+                      ),
                     ),
-                  ),
-                  labelText: 'Password',
-                  labelStyle: TextStyle(
-                    color: Constants.Grey,
-                    fontSize: size.width * 0.04,
-                    fontFamily: 'Poppins',
+                    labelText: 'Password',
+                    labelStyle: TextStyle(
+                      color: Constants.Grey,
+                      fontSize: size.width * 0.04,
+                      fontFamily: 'Poppins',
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 50),
-            SizedBox(
-              // height: size.height * 0.08,
-              child: RoundedButton(
-                text: 'LOGIN',
-                press: () {
-                  homeController.bottomNavIndex.value = 0;
-                  // Get.to(()=> const Landing());
-                  Get.to(()=> const LocationSelectionScreen());
-                },
-                color: Constants.dBlue,
-                textColor: Colors.white,
-                length: size * 0.7,
-                fontsize: size.width * 0.05,
-              ),
-            )
-          ],
+              const SizedBox(height: 50),
+              SizedBox(
+                // height: size.height * 0.08,
+                child: RoundedButton(
+                  text: 'LOGIN',
+                  press: () {
+                    homeController.bottomNavIndex.value = 0;
+                    // Get.to(()=> const Landing());
+                    Get.to(()=> const LocationSelectionScreen());
+                  },
+                  color: Constants.dBlue,
+                  textColor: Colors.white,
+                  length: size * 0.7,
+                  fontsize: size.width * 0.05,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

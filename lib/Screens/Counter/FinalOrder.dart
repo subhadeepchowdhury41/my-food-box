@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myfoodbox/Constants.dart';
 import 'package:myfoodbox/Controller/home_controller.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -56,9 +57,10 @@ class _FinalOrderState extends State<FinalOrder> {
                         child: Text(
                           "Order Details",
                           style: GoogleFonts.openSans(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 20),
+                            fontWeight: FontWeight.bold,
+                            color: iconBlack,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
@@ -74,7 +76,7 @@ class _FinalOrderState extends State<FinalOrder> {
                                 "Order Id",
                                 style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                                  color: textBlack,
                                   fontSize: 17,
                                 ),
                               ),
@@ -82,7 +84,7 @@ class _FinalOrderState extends State<FinalOrder> {
                                 "41524612",
                                 style: GoogleFonts.openSans(
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.black,
+                                  color: textBlack,
                                   fontSize: 13,
                                 ),
                               ),
