@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myfoodbox/Services/LocalDBServices.dart';
+import 'package:myfoodbox/Services/RESTClient.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:get/get.dart';
 
@@ -15,10 +17,64 @@ class QrResult extends StatefulWidget {
 }
 
 class _QrResultState extends State<QrResult> {
+  Map<String, dynamic> details = {};
+  Future<void> markAttendence() async {
+    var dateTime = DateTime.now();
+    final String? uid = await LocalDBServices.getUserId();
+    print(uid);
+    await HttpServices.sendPostReq('appearence', body: {
+      'employee': uid,
+      'restaurant': widget.code,
+      'date': '${dateTime.year}-${dateTime.month}-${dateTime.day+1}',
+      'time': '${dateTime.hour}:${dateTime.minute}'
+    }).then((response) {
+      if (response == null) {
+        return;
+      }
+      if (response.containsKey('id')) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Successfully marked your appearence'))
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(response['result']))
+        );
+      }
+    });
+  }
+  Future<void> getRestaurantDetails() async {
+    await HttpServices.sendGetReq('restaurant/${widget.code}').then((response) async {
+      if (response == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Something went wrong!'))
+        );
+        return;
+      }
+      if (response.containsKey('restaurant')) {
+        setState(() {
+          details['name'] = response['restaurant']['name'];
+          details['address'] = response['restaurant']['address'];
+        });
+        print('.......$details');
+        await markAttendence();
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(response['result']))
+        );
+      }
+    });
+  }
+  _init() async {
+    await getRestaurantDetails();
+  }
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -84,11 +140,34 @@ class _QrResultState extends State<QrResult> {
                     margin: const EdgeInsets.symmetric(horizontal: 20),
                     color: Colors.green.withOpacity(0.5),
                     child: Center(
+                      child: details['name'] == null ? 
+                      SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      ): Text(
+                        details['name'],
+                        style: GoogleFonts.openSans(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 26,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    width: size.width,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Center(
                       child: Text(
-                        widget.code,
+                        details['address'] ?? '',
                         style: GoogleFonts.openSans(
                           fontWeight: FontWeight.w500,
-                          fontSize: 16,
+                          fontSize: 23,
                         ),
                       ),
                     ),

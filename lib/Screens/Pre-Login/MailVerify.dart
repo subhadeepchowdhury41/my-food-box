@@ -39,7 +39,7 @@ class mailVerify extends StatelessWidget {
             child: Container(
               width: size.width * 0.7,
               child: Text(
-                'A verification link has been sent to the email id.This link will be active for the next 30mins. First verify your email id and then sign-in.',
+                'Enter the OTP sent to your email account',
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: size.width * 0.035,

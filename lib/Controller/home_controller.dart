@@ -22,7 +22,7 @@ class HomeController extends GetxController {
   //   AddToCart(),
   //   Profile(),
   // ];
-
+  String? id;
   var bottomNavIndex = 0.obs;
   var isSearching = false.obs;
 

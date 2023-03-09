@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myfoodbox/Controller/home_controller.dart';
 import 'package:myfoodbox/Screens/Counter/MainCounters.dart';
+import 'package:myfoodbox/Screens/Onboarding/Onboarding.dart';
 import 'package:myfoodbox/Screens/Pre-Login/start.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Controller/cartController.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: StartPage(),
+      home: Onboarding(),
     );
   }
 }

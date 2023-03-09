@@ -36,7 +36,6 @@ class CartController extends GetxController {
   getCartItemQuantity(int id) {
     final index =
         cartProduct.indexWhere((element) => element.singleFood.id == id);
-
     return cartProduct[index].qty.toString();
   }
 
