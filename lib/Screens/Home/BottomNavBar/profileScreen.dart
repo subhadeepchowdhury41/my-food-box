@@ -10,6 +10,7 @@ import 'package:myfoodbox/Screens/Pre-Login/LogIn.dart';
 import 'package:myfoodbox/Screens/Pre-Login/start.dart';
 import 'package:myfoodbox/Screens/UserProfile/Activity.dart';
 import 'package:myfoodbox/Screens/UserProfile/WishList.dart';
+import 'package:myfoodbox/Services/LocalDBServices.dart';
 
 class ProfileScreen extends StatefulWidget {
   final bool close;
@@ -258,7 +259,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(()=> const TransactionScreen());
+                        Get.to(() => const TransactionScreen());
                       },
                       child: SizedBox(
                         height: 50,
@@ -306,7 +307,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Get.to(() => const SettingsScreen());
                       },
                       child: SizedBox(
@@ -345,8 +346,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 5,
                     ),
                     InkWell(
-                      onTap: (){
-                        Get.to(()=> const AboutScreen());
+                      onTap: () {
+                        Get.to(() => const AboutScreen());
                       },
                       child: SizedBox(
                         height: 50,
@@ -384,8 +385,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 5,
                     ),
                     InkWell(
-                      onTap: (){
-                        Get.to(()=> const HelpScreen());
+                      onTap: () {
+                        Get.to(() => const HelpScreen());
                       },
                       child: SizedBox(
                         height: 50,
@@ -423,8 +424,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 20),
               //Logout Button
               InkWell(
-                onTap: () {
-                  Get.offAll(() => StartPage());
+                onTap: () async {
+                  await LocalDBServices.deleteUid().then((value) {
+                    Get.offAll(() => StartPage());
+                  });
                 },
                 child: Container(
                   height: 50,

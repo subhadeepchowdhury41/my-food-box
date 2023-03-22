@@ -78,9 +78,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         controller: _fnameCtrl,
                         size: size,
                         text: 'First Name',
-                        validator:(value) =>
-                        value == null || value.length == 0 ?
-                         "First name can't be Empty": null,
+                        validator: (value) => value == null || value.length == 0
+                            ? "First name can't be Empty"
+                            : null,
                       ),
                       formField(
                         controller: _lnameCtrl,
@@ -90,9 +90,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       formField(
                         controller: _emailCtrl,
                         size: size,
-                        validator: (value) =>
-                        value == null || value.length == 0 ?
-                         "Email can't be Empty": null,
+                        validator: (value) => value == null || value.length == 0
+                            ? "Email can't be Empty"
+                            : null,
                         text: 'Email',
                       ),
                       formField(
@@ -100,8 +100,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         size: size,
                         text: 'Phone Number',
                         validator: (value) =>
-                          value == null || value.length != 10 ? 
-                          "Invalid phone number" : null,
+                            value == null || value.length != 10
+                                ? "Invalid phone number"
+                                : null,
                       ),
                       Padding(
                         padding: EdgeInsets.fromLTRB(
@@ -109,8 +110,9 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: TextFormField(
                           controller: _passwordCtrl,
                           validator: (value) =>
-                          value == null || value.length == 0 ?
-                         "Password can't be Empty": null,
+                              value == null || value.length == 0
+                                  ? "Password can't be Empty"
+                                  : null,
                           obscureText: show,
                           decoration: InputDecoration(
                             suffixIcon: GestureDetector(
@@ -136,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: EdgeInsets.fromLTRB(
                             size.width * 0.07, 0, size.width * 0.07, 0),
-                        child: TextFormField( 
+                        child: TextFormField(
                           controller: _confirmPasswordCtrl,
                           validator: (value) {
                             if (value == null || value == '') {
@@ -200,7 +202,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             if (resposne != null) {
                               if (resposne.containsKey('id')) {
                                 print(resposne.toString());
-                                await LocalDBServices.saveUserId(resposne['id']).then((value){
+                                await LocalDBServices.saveUserId(resposne['id'])
+                                    .then((value) {
                                   homeController.bottomNavIndex.value = 0;
                                   homeController.id = resposne['id'];
                                 });
@@ -208,21 +211,20 @@ class _SignUpPageState extends State<SignUpPage> {
                                 Get.to(() => const Adress());
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(resposne['result']))
-                                );
+                                    SnackBar(
+                                        content: Text(
+                                            resposne['message'].toString())));
                               }
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Something went wrong!'))
-                              );
+                                  SnackBar(
+                                      content: Text('Something went wrong!')));
                             }
                           });
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Please fill the form properly'))
-                          );
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Please fill the form properly')));
                         }
-                        
                       },
                       fontsize: size.width * 0.055,
                       length: size * 0.7,
