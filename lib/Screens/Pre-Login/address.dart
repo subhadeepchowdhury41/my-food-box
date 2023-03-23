@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:myfoodbox/Components/RoundedButton.dart';
 import '../../Constants.dart' as Constants;
 import 'MailVerify.dart';
@@ -46,10 +48,11 @@ class _AdressState extends State<Adress> {
             Text(
               'Select City',
               style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: size.width * 0.04,
-                  fontWeight: FontWeight.w400,
-                  color: Constants.Grey,),
+                fontFamily: 'Poppins',
+                fontSize: size.width * 0.04,
+                fontWeight: FontWeight.w400,
+                color: Constants.Grey,
+              ),
             ),
             Container(
               width: size.width * 0.8,
@@ -79,10 +82,11 @@ class _AdressState extends State<Adress> {
             Text(
               'Select Cafe',
               style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: size.width * 0.04,
-                  fontWeight: FontWeight.w400,
-                  color: Constants.Grey,),
+                fontFamily: 'Poppins',
+                fontSize: size.width * 0.04,
+                fontWeight: FontWeight.w400,
+                color: Constants.Grey,
+              ),
             ),
             Container(
               width: size.width * 0.8,
@@ -115,8 +119,7 @@ class _AdressState extends State<Adress> {
               textColor: Colors.white,
               length: size * 0.7,
               press: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => mailVerify()));
+                Get.to(() => mailVerify());
               },
               fontsize: size.width * 0.05,
             ),

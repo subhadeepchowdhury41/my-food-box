@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfoodbox/Components/AppBar.dart';
-import 'package:myfoodbox/Components/BreakFast/Counter.dart';
 import 'package:myfoodbox/Components/HomePage/BottomNav.dart';
 import '../../Components/BreakFast/BreakfastCard.dart';
-import '../../Components/BreakFast/StarRating.dart';
 import '../../Constants.dart' as Constants;
 
 class Breakfast extends StatefulWidget {
