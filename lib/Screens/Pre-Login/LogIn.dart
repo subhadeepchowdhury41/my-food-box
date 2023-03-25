@@ -46,13 +46,13 @@ class _LogInState extends State<LogIn> {
               // alignment: Alignment.topCenter,
               children: <Widget>[
                 Image.asset(
-                  'assets/images/LogIn/LogIn.png',
+                  'assets/images/app_logo.png',
                   width: size.width,
                 ),
                 formField(
                   controller: _emailCtrl,
                   size: size,
-                  text: 'Email Id',
+                  text: 'Email Id',  
                   validator: (value) =>
                   value == null || value.length == 0
                     ? "Password can't be empty" : null,
